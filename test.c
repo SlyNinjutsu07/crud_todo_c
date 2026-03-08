@@ -11,17 +11,9 @@ int main(void) {
 
   while (1) {
 
-    printf("Type an index: ");
-    int input = fgetc(stdin) - '0'; // To match inputs rather than ascii code
-    fgetc(stdin); // Consume "\n"
-
-    if (1 <= input && input <= 4) {
-      past_sel_index = curr_sel_index;
-      curr_sel_index = input;
-    } else if(input == 0) exit(0);
-
     char buffer[36];
     for (int i = 1; i <= 4; i++) {
+      // Prints out option
       if (curr_sel_index == i) {
         strcpy(buffer, "(>) ");
         strcat(buffer, options[i - 1]);
@@ -30,6 +22,19 @@ int main(void) {
         printf("%s\n", options[i - 1]);
     }
     memset(buffer, 0, sizeof(buffer));
+
+    int input = 0;
+
+    printf("Type an index: ");
+    input = fgetc(stdin) - '0'; // To match inputs rather than ascii code
+    fgetc(stdin);               // Consume "\n"
+
+    if (1 <= input && input <= 4) {
+      past_sel_index = curr_sel_index;
+      curr_sel_index = input;
+    } else if (input == 0)
+      exit(0);
+    system("clear");
   }
 
   return 0;
