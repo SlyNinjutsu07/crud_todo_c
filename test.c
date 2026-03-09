@@ -23,16 +23,15 @@ int main(void) {
     }
     memset(buffer, 0, sizeof(buffer));
 
-    int input = 0;
+    char input[10];
 
-    printf("Type an index: ");
-    input = fgetc(stdin) - '0'; // To match inputs rather than ascii code
-    fgetc(stdin);               // Consume "\n"
+    printf("Type an index (hit 'enter' to exit): ");
+    fgets(input, sizeof input, stdin);
 
-    if (1 <= input && input <= 4) {
+    if (1 <= input[0] - '0' && input[0] - '0' <= 4) {
       past_sel_index = curr_sel_index;
-      curr_sel_index = input;
-    } else if (input == 0)
+      curr_sel_index = input[0] - '0';
+    } else if (input[0] - '0'== '\n')
       exit(0);
     system("clear");
   }

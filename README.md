@@ -6,7 +6,7 @@ Goals:
 - Deleting data
 - Some additional stuff...
 
-**DO NOT MODIFY `todo_notes` DIRECTORY**
+**DO NOT MODIFY `files` DIRECTORY**
 
 
 Might make something like this with the **GTK** library.

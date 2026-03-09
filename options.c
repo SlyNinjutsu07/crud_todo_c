@@ -1,9 +1,5 @@
 #include <stdio.h>
-
-typedef struct{
-  char *name;
-  char *options_list;
-} option;
+#include "options.h"
 
 void add_item(){
 
