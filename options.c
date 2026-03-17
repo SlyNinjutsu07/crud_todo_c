@@ -15,11 +15,12 @@ void read(char *file_path) {
   buffer[0] = '\0';
   fread(buffer,256,sizeof(char),file);
 
-  char* p = buffer;
-  char* task = p;
-  while(p = strstr(p, '-')){
-    strcat(task,buffer - p);
+  char* pa = buffer, pb = pa;
+  char* task = '\0';
+  while(pa = strstr(pa, '-')){
+    strcpy(task,pa - pb);
     printf("%s\n", task);
-  }
+    pb = pa;
+  } 
   
 }
