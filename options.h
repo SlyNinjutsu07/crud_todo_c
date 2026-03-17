@@ -1,4 +1,4 @@
 #include <stdio.h>
 
-void write();
-void read(FILE *file);
+void write(char *file);
+void read(char *file);
