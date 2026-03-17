@@ -1,3 +1,4 @@
 #include <stdio.h>
 
-void add_item();
+void write();
+void list(FILE *file);
