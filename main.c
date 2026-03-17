@@ -41,12 +41,14 @@ int main(void) {
       exit(0);
     }
     else if (input[0] == '\n'){
-      if(curr_sel_index == 1) write(path_todos);
+      if(curr_sel_index == 1){
+        write(path_todos);
+      } 
       else if (curr_sel_index == 0) write(path_goals);
       // if(curr_sel_index == 1) read(path_todos);
       // else if (curr_sel_index == 0) read(path_goals);
     }
-    system("clear");
+    // system("clear");
   }
 
 

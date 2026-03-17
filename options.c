@@ -4,7 +4,10 @@
 
 
 void write(char *file_path){
+  printf("openingfile");
   FILE *file = fopen(file_path, "wb");
+  printf("openedfile");
+
   printf("Type what you want to add: ");
   char input[64];
   input[0] = '\0';
@@ -21,14 +24,14 @@ void read(char *file_path) {
   buffer[0] = '\0';
   fread(buffer,256,sizeof(char),file);
 
-  char* pa = buffer, pb = pa;
-  char* task[64];
-  while(pa = strstr(pa, '-')){
+  char *pa = buffer, *pb = pa;
+  char task[64];
+  while ((pa = strstr(pa, "-"))) {
     strncpy(task, pb, pa - pb);
     task[strcspn(task, "\n")] = '\0';
     printf("%s\n", task);
     pb = pa;
-  } 
+  }
 
   fclose(file);
 }
