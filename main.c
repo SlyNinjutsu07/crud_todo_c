@@ -6,8 +6,8 @@
 int main(void) {
 
   //Opening files
-  FILE *ftodos = fopen("files/todo.bin", "wb");
-  FILE *fgoals = fopen("files/goal.bin", "wb");
+  char *path_todos = "files/todo.bin";
+  char *path_goals = "files/goals.bin"; 
 
   int curr_sel_index = 1, past_sel_index = 0;
 
@@ -40,15 +40,12 @@ int main(void) {
     else if (input[0] == 'q'){
       exit(0);
     }
-    // else if (input[0] == '\n'){
-    // list()
-    // }
+    else if (input[0] == '\n'){
+
+    }
     system("clear");
   }
 
-  //Closing files
-  fclose(ftodos);
-  fclose(fgoals);
 
   return 0;
 }
