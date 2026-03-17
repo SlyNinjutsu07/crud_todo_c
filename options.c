@@ -5,15 +5,13 @@
 
 void write(char *file_path){
   printf("openingfile");
-  FILE *file = fopen(file_path, "wb");
-  printf("openedfile");
-
+  //FILE *file = fopen(file_path, "wb");
   printf("Type what you want to add: ");
   char input[64];
   input[0] = '\0';
   fgets(input, sizeof input, stdin);
-  fprintf(file, "[] %s\n", input);
-  fclose(file);
+  // fprintf(file, "[] %s\n", input);
+  // fclose(file);
 }
 
 // Outputs the values from that specific file
