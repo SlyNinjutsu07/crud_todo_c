@@ -7,9 +7,10 @@ void write(char *file_path){
   FILE *file = fopen(file_path, "ab");//Open in append mode
   printf("Type what you want to add: ");
   char input[64];
-  input[0] = '\0';
-  fgets(input, sizeof input, stdin);
-  fprintf(file, "- %s\n", input);
+  fgets(input, sizeof(input) - 2, stdin);
+  char mod_input[67]; // 6 7 🤪
+  snprintf(mod_input, sizeof mod_input, "- %s\n", input);
+  fwrite(mod_input, sizeof(char), sizeof mod_input, file);
   fclose(file);
 }
 
@@ -32,4 +33,8 @@ void read(char *file_path) {
   }
 
   fclose(file);
+}
+
+void settings(){
+  //Either clear goals or to-dos
 }
