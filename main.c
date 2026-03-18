@@ -9,7 +9,7 @@ int main(void) {
   char *path_todos = "files/todo.bin";
   char *path_goals = "files/goals.bin"; 
 
-  int curr_sel_index = 1, past_sel_index = 0;
+  int curr_sel_index = 1;
 
   char *options[] = {"TO-DO", "GOALS", "SETTINGS", "EXIT"};
 
@@ -26,7 +26,7 @@ int main(void) {
       } else
         printf("%s\n", options[i - 1]);
     }
-    memset(buffer, 0, sizeof(buffer));
+    memset(buffer, 0, sizeof buffer );
 
     char input[10];
 
@@ -34,7 +34,6 @@ int main(void) {
     fgets(input, sizeof input, stdin);
 
     if (1 <= input[0] - '0' && input[0] - '0' <= 4) {
-      past_sel_index = curr_sel_index;
       curr_sel_index = input[0] - '0';
     } 
     else if (input[0] == 'q'){
