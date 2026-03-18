@@ -41,7 +41,7 @@ int main(void) {
     }
     else if (input[0] == '\n'){
       if(curr_sel_index == 1){
-        write(path_todos);
+        read(path_todos);
       } 
       else if (curr_sel_index == 0) write(path_goals);
       // if(curr_sel_index == 1) read(path_todos);
