@@ -7,3 +7,5 @@
 **3/19/26** 
 
 so I'm currently having trouble where my `read()` function isn't properly reading the binary data. But the thing is it was and I realized that in my `read()` function, I had a `strncmp` operation that added `\0` to the end of a string, which was converted into binary. So it would only read and end up until that `\0` 😭.
+
+**eod**: Trouble with writing and reading to .bin file. fix required
