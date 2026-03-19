@@ -41,9 +41,14 @@ int main(void) {
     }
     else if (input[0] == '\n'){
       if(curr_sel_index == 1){
-        read(path_todos);
+        char i[64];
+        printf("Hit enter to view list | Type if you want to add something new: ");
+        fgets(i,sizeof i,stdin); 
+        printf("%s\n", i);
+        if(i[0]=='\n') read(path_todos);
+        else write(path_todos, i);
       } 
-      else if (curr_sel_index == 0) write(path_goals);
+      else if (curr_sel_index == 2) read(path_goals);
       // if(curr_sel_index == 1) read(path_todos);
       // else if (curr_sel_index == 0) read(path_goals);
     }
