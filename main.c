@@ -1,19 +1,19 @@
+#include "options.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "options.h"
 
 int main(void) {
 
-  //Opening files
+  // Opening files
   char *path_todos = "files/todo.bin";
-  char *path_goals = "files/goals.bin"; 
+  char *path_goals = "files/goals.bin";
 
   int curr_sel_index = 1;
 
   char *options[] = {"TO-DO", "GOALS", "SETTINGS", "EXIT"};
 
-  //Getting Input
+  // Getting Input
   while (1) {
 
     char buffer[36];
@@ -26,7 +26,7 @@ int main(void) {
       } else
         printf("%s\n", options[i - 1]);
     }
-    memset(buffer, 0, sizeof buffer );
+    memset(buffer, 0, sizeof buffer);
 
     char input[10];
 
@@ -35,25 +35,32 @@ int main(void) {
 
     if (1 <= input[0] - '0' && input[0] - '0' <= 4) {
       curr_sel_index = input[0] - '0';
-    } 
-    else if (input[0] == 'q'){
+    } else if (input[0] == 'q') {
       exit(0);
+    } else if (input[0] == '\n') {
+      char i[64];
+      //TO-DOS
+      if (curr_sel_index == 1) {
+        printf(
+            "Hit enter to view list | Type if you want to add something new: ");
+        fgets(i, sizeof i, stdin);
+        if (i[0] == '\n')
+          read(path_todos);
+        else
+          write(path_todos, i);
+      }
+      //GOALS
+      else if (curr_sel_index == 2) {
+        printf("Hit enter or type a new goal: ");
+        fgets(i, sizeof i, stdin);
+        if (i[0] == '\n')
+          read(path_goals);
+        else
+          write(path_goals, i);
+      }
     }
-    else if (input[0] == '\n'){
-      if(curr_sel_index == 1){
-        char i[64];
-        printf("Hit enter to view list | Type if you want to add something new: ");
-        fgets(i,sizeof i,stdin); 
-        if(i[0]=='\n') read(path_todos);
-        else write(path_todos, i);
-      } 
-      else if (curr_sel_index == 2) read(path_goals);
-      // if(curr_sel_index == 1) read(path_todos);
-      // else if (curr_sel_index == 0) read(path_goals);
-    }
-    // system("clear");
+    system("clear");
   }
-
 
   return 0;
 }

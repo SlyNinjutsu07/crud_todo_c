@@ -14,4 +14,6 @@ so I'm currently having trouble where my `read()` function isn't properly readin
 
 refactored `read()` function in `options.c`. A LOT of clutter removed and reading properly works now, decided to read byte by byte to skip over null-termination, and then null-terminate at the end.
 
-**eod**: there's a random piece of garbage data appearing and **I HAVE NO IDEA WHY**.
+Also I added the same features for "GOALS", so it should probably work now smoothly
+
+**eod**: "SETTINGS" needs some functionality; Deletion for tasks; Updating (re-edit) tasks

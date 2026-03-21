@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "options.h"
 
@@ -30,7 +31,9 @@ void read(char *file_path) {
   }
   buffer[pos] = '\0';
 
+  system("clear");
   printf("%s", buffer);
+  fgetc(stdin);
 
   fclose(file);
 }
