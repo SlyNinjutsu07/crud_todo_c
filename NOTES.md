@@ -9,3 +9,9 @@
 so I'm currently having trouble where my `read()` function isn't properly reading the binary data. But the thing is it was and I realized that in my `read()` function, I had a `strncmp` operation that added `\0` to the end of a string, which was converted into binary. So it would only read and end up until that `\0` 😭.
 
 **eod**: Trouble with writing and reading to .bin file. fix required
+
+**3/21/26**
+
+refactored `read()` function in `options.c`. A LOT of clutter removed and reading properly works now, decided to read byte by byte to skip over null-termination, and then null-terminate at the end.
+
+**eod**: there's a random piece of garbage data appearing and **I HAVE NO IDEA WHY**.

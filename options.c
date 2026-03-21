@@ -2,13 +2,15 @@
 #include <string.h>
 #include "options.h"
 
+#define SIZE 256
 
+//Writes the following: "- {string}\n\0"
 void write(char *file_path, char *usr_input){
   FILE *file = fopen(file_path, "ab");//Open in append mode
-  char mod_input[40]; // 6 7 🤪
+  char mod_input[40]; 
   snprintf(mod_input, sizeof mod_input, "- %s\n", usr_input);//Null-term on its own
-  fwrite(mod_input, sizeof(char), sizeof mod_input, file);
-  read(file_path);
+  fwrite(mod_input, sizeof(char), strlen(mod_input) + 1, file);//strlen + 1 includes '\0'
+  // read(file_path);
   fclose(file);
 }
 
@@ -16,20 +18,19 @@ void write(char *file_path, char *usr_input){
 void read(char *file_path) {
   //Open the file
   FILE *file = fopen(file_path, "rb");
-  char buffer[256];
-  size_t n = fread(buffer,sizeof buffer,sizeof(char),file);
-  buffer[strcspn(buffer, "\0")] = ' ';
-  buffer[n] = '\0';
 
-  char *pa = buffer, *pb = pa;
-  char task[32];
+  char buffer[SIZE];
 
-  while ((pa = strstr(pa, "\n")) != NULL) {
-    strncpy(task, pb, (pa - pb) + 1);
-    printf("%s", task);
-    pb = pa;
-    pa++;
+  //Read notes and null-terminate
+  int pos = 0;
+  char byte;
+  while(fread(&byte, sizeof(char), 1, file) > 0){
+    if(byte != '\0') buffer[pos++] = byte;
+    if(pos >= sizeof buffer) break;
   }
+  buffer[pos] = '\0';
+
+  printf("%s", buffer);
 
   fclose(file);
 }

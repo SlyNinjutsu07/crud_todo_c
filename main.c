@@ -44,7 +44,6 @@ int main(void) {
         char i[64];
         printf("Hit enter to view list | Type if you want to add something new: ");
         fgets(i,sizeof i,stdin); 
-        printf("%s\n", i);
         if(i[0]=='\n') read(path_todos);
         else write(path_todos, i);
       } 
