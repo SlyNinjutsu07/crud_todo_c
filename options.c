@@ -16,18 +16,18 @@ void write(char *file_path, char *usr_input){
 }
 
 // Outputs the values from that specific file
-void read(char *file_path) {
+char *read(char *file_path, char *buffer) {
   //Open the file
   FILE *file = fopen(file_path, "rb");
-
-  char buffer[SIZE];
+  buffer = (char *)malloc(sizeof(char) * SIZE);
 
   //Read notes and null-terminate
   int pos = 0;
   char byte;
+
   while(fread(&byte, sizeof(char), 1, file) > 0){
     if(byte != '\0') buffer[pos++] = byte;
-    if(pos >= sizeof buffer) break;
+    if(pos >= SIZE) break;
   }
   buffer[pos] = '\0';
 
@@ -36,6 +36,8 @@ void read(char *file_path) {
   fgetc(stdin);
 
   fclose(file);
+  
+  return buffer;
 }
 
 void settings(){
