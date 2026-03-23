@@ -40,6 +40,6 @@ char *read(char *file_path, char *buffer) {
   return buffer;
 }
 
-void settings(){
+void settings(void){
   //Either clear goals or to-dos
 }
