@@ -17,3 +17,5 @@ refactored `read()` function in `options.c`. A LOT of clutter removed and readin
 Also I added the same features for "GOALS", so it should probably work now smoothly
 
 **eod**: "SETTINGS" needs some functionality; Deletion for tasks; Updating (re-edit) tasks
+
+**3/31/26**
