@@ -6,9 +6,8 @@
 int main(void) {
 
   // Opening files
-  char *path_todos = "files/todo.bin";
-  char *path_goals = "files/goals.bin";
-
+  note todos = {.note_path = "files/todo.bin", .note_count = 0};
+  note goals = {.note_path = "files/goals.bin", .note_count = 0};
   int curr_sel_index = 1;
 
   char *options[] = {"TO-DO", "GOALS", "SETTINGS", "EXIT"};
@@ -41,8 +40,7 @@ int main(void) {
     // 'q' to quit
     else if (input[0] == 'q') {
       exit(0);
-    }
-    else if (input[0] == 'd'){
+    } else if (input[0] == 'd') {
     }
     // enter to see that list
     else if (input[0] == '\n') {
@@ -50,26 +48,31 @@ int main(void) {
       char i[64];               // input
 
       switch (curr_sel_index) {
-        case 1: //TODOS
-          printf(
-              "Hit enter to view list | Type if you want to add something new: ");
-          fgets(i, sizeof i, stdin);
-          if (i[0] == '\n')
-            printf("%s", read(path_todos, opts_buffer));
-          else
-            write(path_todos, i);
-          break;
-        case 2: //GOALS
-          printf("Hit enter or type a new goal: ");
-          fgets(i, sizeof i, stdin);
-          if (i[0] == '\n')
-            printf("%s", read(path_goals, opts_buffer));
-          else
-            write(path_goals, i);
-          break;
+      case 1: // TODOS
+        printf(
+            "Hit enter to view list | Type if you want to add something new: ");
+        fgets(i, sizeof i, stdin);
+        if (i[0] == '\n') {
+          printf("%s\n", read(&todos, opts_buffer));
+          printf("%d\n", todos.note_count);
+          fgetc(stdin);
+        } else
+          write(&todos, i);
+        break;
+      case 2: // GOALS
+        printf("Hit enter or type a new goal: ");
+        fgets(i, sizeof i, stdin);
+        if (i[0] == '\n')
+          printf("%s", read(&goals, opts_buffer));
+        else
+          write(&goals, i);
+        break;
       }
-      
-   }
+    }
+
+    todos.note_count = 0;
+    goals.note_count = 0;
+
     system("clear");
   }
 

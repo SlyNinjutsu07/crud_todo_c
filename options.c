@@ -6,8 +6,8 @@
 #define SIZE 256
 
 // Writes the following to file @ `file_path`: "- {`usr_input`}\n\0"
-void write(char *file_path, char *usr_input){
-  FILE *file = fopen(file_path, "ab");//Open in append mode
+void write(note *n, char *usr_input){
+  FILE *file = fopen(n->note_path, "ab");//Open in append mode
   char mod_input[40]; 
   snprintf(mod_input, sizeof mod_input, "- %s\n", usr_input);//Null-term on its own
   fwrite(mod_input, sizeof(char), strlen(mod_input) + 1, file);//strlen + 1 includes '\0'
@@ -18,34 +18,36 @@ void write(char *file_path, char *usr_input){
 // Allocates `256 bytes` to `buffer`
 // Reads data from file @ `file_path` into `buffer`
 // Auto terminates: `'\0'`
-char *read(char *file_path, char *buffer) {
+char *read(note *n, char *buffer) {
   //Open the file
-  FILE *file = fopen(file_path, "rb");
+  FILE *file = fopen(n->note_path, "rb");
   buffer = (char *)malloc(sizeof(char) * SIZE);
 
   //Read notes and null-terminate
   int pos = 0;
   char byte;
 
+  //Reads until the last character IN THE FILE (not in garbage memory)
   while(fread(&byte, sizeof(char), 1, file) > 0){
-    if(byte != '\0') buffer[pos++] = byte;
+    if(byte != '\0') buffer[pos++] = byte; //Reads without null terminations
+    if(byte == '-') n->note_count++;
     if(pos >= SIZE) break;
   }
   buffer[pos] = '\0';
 
   system("clear");
-  printf("%s", buffer);
+  printf("%s\n%d", buffer, n->note_count);
   fgetc(stdin);
 
   fclose(file);
   
   return buffer;
 }
-
-void delete(void){
-  char *delBuf = (char*)malloc(SIZE);
-  int COUNT = 0;
-
+//
+// void delete(void){
+//   char *delBuf = (char*)malloc(SIZE);
+//   int COUNT = 0;
+// }
 
 void settings(void){
   //Either clear goals or to-dos

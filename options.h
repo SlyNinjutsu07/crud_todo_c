@@ -1,5 +1,10 @@
 #include <stdio.h>
 
-void write(char *file, char *usr_input);
-char *read(char *file, char *buffer);
+typedef struct {
+  int note_count;
+  char *note_path;
+} note;
+
+void write(note *n, char *usr_input);
+char *read(note *n, char *buffer);
 void settings();
