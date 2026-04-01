@@ -19,3 +19,10 @@ Also I added the same features for "GOALS", so it should probably work now smoot
 **eod**: "SETTINGS" needs some functionality; Deletion for tasks; Updating (re-edit) tasks
 
 **3/31/26**
+
+added a switch statement instead of having a list of if-else statements (the part of the code when you hit enter on an option)
+
+**4/1/26**
+
+I just made my own HTTP server! haha april fools
+

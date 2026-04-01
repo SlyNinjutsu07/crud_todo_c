@@ -42,6 +42,8 @@ int main(void) {
     else if (input[0] == 'q') {
       exit(0);
     }
+    else if (input[0] == 'd'){
+    }
     // enter to see that list
     else if (input[0] == '\n') {
       char *opts_buffer = NULL; // buffer for each option
@@ -66,26 +68,8 @@ int main(void) {
             write(path_goals, i);
           break;
       }
-      // // TO-DOS
-      // if (curr_sel_index == 1) {
-      //   printf("Hit enter to view list | Type if you want to add something "
-      //          "new: ");
-      //   fgets(i, sizeof i, stdin);
-      //   if (i[0] == '\n')
-      //     printf("%s", read(path_todos, opts_buffer));
-      //   else
-      //     write(path_todos, i);
-      // }
-      // // GOALS
-      // else if (curr_sel_index == 2) {
-      //   printf("Hit enter or type a new goal: ");
-      //   fgets(i, sizeof i, stdin);
-      //   if (i[0] == '\n')
-      //     printf("%s", read(path_goals, opts_buffer));
-      //   else
-      //     write(path_goals, i);
-      // }
-    }
+      
+   }
     system("clear");
   }
 

@@ -5,7 +5,7 @@
 
 #define SIZE 256
 
-//Writes the following: "- {string}\n\0"
+// Writes the following to file @ `file_path`: "- {`usr_input`}\n\0"
 void write(char *file_path, char *usr_input){
   FILE *file = fopen(file_path, "ab");//Open in append mode
   char mod_input[40]; 
@@ -15,7 +15,9 @@ void write(char *file_path, char *usr_input){
   fclose(file);
 }
 
-// Outputs the values from that specific file
+// Allocates `256 bytes` to `buffer`
+// Reads data from file @ `file_path` into `buffer`
+// Auto terminates: `'\0'`
 char *read(char *file_path, char *buffer) {
   //Open the file
   FILE *file = fopen(file_path, "rb");
@@ -39,6 +41,10 @@ char *read(char *file_path, char *buffer) {
   
   return buffer;
 }
+
+void delete(void){
+  char *delBuf = (char*)malloc(SIZE);
+  int COUNT = 0;
 
 
 void settings(void){
