@@ -40,11 +40,12 @@ int main(void) {
     // 'q' to quit
     else if (input[0] == 'q') {
       exit(0);
-    } else if (input[0] == 'd') {
+    } 
+    // 'd' to delete
+    else if (input[0] == 'd') {
     }
     // enter to see that list
     else if (input[0] == '\n') {
-      char *opts_buffer = NULL; // buffer for each option
       char i[64];               // input
 
       switch (curr_sel_index) {
@@ -53,9 +54,7 @@ int main(void) {
             "Hit enter to view list | Type if you want to add something new: ");
         fgets(i, sizeof i, stdin);
         if (i[0] == '\n') {
-          printf("%s\n", read(&todos, opts_buffer));
-          printf("%d\n", todos.note_count);
-          fgetc(stdin);
+          read(&todos);
         } else
           write(&todos, i);
         break;
@@ -63,7 +62,7 @@ int main(void) {
         printf("Hit enter or type a new goal: ");
         fgets(i, sizeof i, stdin);
         if (i[0] == '\n')
-          printf("%s", read(&goals, opts_buffer));
+          read(&goals);
         else
           write(&goals, i);
         break;

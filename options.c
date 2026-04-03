@@ -18,10 +18,13 @@ void write(note *n, char *usr_input){
 // Allocates `256 bytes` to `buffer`
 // Reads data from file @ `file_path` into `buffer`
 // Auto terminates: `'\0'`
-char *read(note *n, char *buffer) {
+char *read(note *n) {
   //Open the file
   FILE *file = fopen(n->note_path, "rb");
-  buffer = (char *)malloc(sizeof(char) * SIZE);
+  char *buffer = (char *)malloc(sizeof(char) * SIZE);
+
+  if(!file) return NULL;
+  if(!buffer) {fclose(file); return NULL;}
 
   //Read notes and null-terminate
   int pos = 0;
@@ -36,18 +39,19 @@ char *read(note *n, char *buffer) {
   buffer[pos] = '\0';
 
   system("clear");
-  printf("%s\n%d", buffer, n->note_count);
+  printf("%s\n", buffer);
   fgetc(stdin);
 
   fclose(file);
   
   return buffer;
 }
-//
-// void delete(void){
-//   char *delBuf = (char*)malloc(SIZE);
-//   int COUNT = 0;
-// }
+
+void delete(note *n){
+  char *del_buf = read(n);
+
+  fgetc(stdin);
+}
 
 void settings(void){
   //Either clear goals or to-dos

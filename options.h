@@ -6,5 +6,5 @@ typedef struct {
 } note;
 
 void write(note *n, char *usr_input);
-char *read(note *n, char *buffer);
+char *read(note *n);
 void settings();
