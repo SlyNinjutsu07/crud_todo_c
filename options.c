@@ -47,8 +47,20 @@ char *read(note *n) {
   return buffer;
 }
 
-void delete(note *n){
+void delete_item(note *n){
   char *del_buf = read(n);
+  int i = 1;
+  char *p1 = del_buf, *p2 = p1;
+
+  //Put a number in front of every option
+  while((p1 = strstr(p2, "\n")) != NULL){
+    printf("{%d} %.*s\n", i, (int)(p1-p2), p2);
+    i++;
+    p1++;
+    p2 = p1;
+  }
+    
+  printf("Which note would you like to delete?");
 
   fgetc(stdin);
 }

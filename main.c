@@ -43,6 +43,7 @@ int main(void) {
     } 
     // 'd' to delete
     else if (input[0] == 'd') {
+      delete_item(&todos);
     }
     // enter to see that list
     else if (input[0] == '\n') {

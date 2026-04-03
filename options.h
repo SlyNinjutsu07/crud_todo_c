@@ -7,4 +7,5 @@ typedef struct {
 
 void write(note *n, char *usr_input);
 char *read(note *n);
+void delete_item(note *n);
 void settings();
