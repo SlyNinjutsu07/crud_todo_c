@@ -56,7 +56,7 @@ void delete_item(note *n){
   while((p1 = strstr(p2, "\n")) != NULL){
     printf("{%d} %.*s\n", i, (int)(p1-p2), p2);
     i++;
-    p1++;
+    p1+=2;//skip the second '\n'
     p2 = p1;
   }
     
