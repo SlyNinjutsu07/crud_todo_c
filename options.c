@@ -38,10 +38,6 @@ char *read(note *n) {
   }
   buffer[pos] = '\0';
 
-  system("clear");
-  printf("%s\n", buffer);
-  fgetc(stdin);
-
   fclose(file);
   
   return buffer;
@@ -60,7 +56,11 @@ void delete_item(note *n){
     p2 = p1;
   }
     
+  char temp[10];
   printf("Which note would you like to delete?");
+  fgets(temp, 10, stdin);
+  
+  
 
   fgetc(stdin);
 }

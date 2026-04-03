@@ -14,6 +14,7 @@ int main(void) {
 
   // Getting Input
   while (1) {
+    system("clear");
 
     char ops_buffer[36];
     for (int i = 1; i <= 4; i++) {
@@ -40,14 +41,15 @@ int main(void) {
     // 'q' to quit
     else if (input[0] == 'q') {
       exit(0);
-    } 
+    }
     // 'd' to delete
     else if (input[0] == 'd') {
-      delete_item(&todos);
+      if(curr_sel_index == 1) delete_item(&todos);
+      else if (curr_sel_index == 2) delete_item(&goals);
     }
     // enter to see that list
     else if (input[0] == '\n') {
-      char i[64];               // input
+      char i[64]; // input
 
       switch (curr_sel_index) {
       case 1: // TODOS
@@ -55,15 +57,20 @@ int main(void) {
             "Hit enter to view list | Type if you want to add something new: ");
         fgets(i, sizeof i, stdin);
         if (i[0] == '\n') {
-          read(&todos);
+          system("clear");
+          printf("%s\n", read(&todos));
+          fgetc(stdin);
         } else
           write(&todos, i);
         break;
       case 2: // GOALS
         printf("Hit enter or type a new goal: ");
         fgets(i, sizeof i, stdin);
-        if (i[0] == '\n')
-          read(&goals);
+        if (i[0] == '\n'){
+          system("clear");
+          printf("%s\n", read(&goals));
+          fgetc(stdin);        
+        }
         else
           write(&goals, i);
         break;
@@ -73,7 +80,6 @@ int main(void) {
     todos.note_count = 0;
     goals.note_count = 0;
 
-    system("clear");
   }
 
   return 0;
