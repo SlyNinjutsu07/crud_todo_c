@@ -56,9 +56,15 @@ void delete_item(note *n){
     p2 = p1;
   }
     
+<<<<<<< HEAD
   // char temp[10];
   // printf("Which note would you like to delete?");
   // fgets(temp, 10, stdin);
+=======
+  char temp[10];
+  printf("Which note would you like to delete?");
+  fgets(temp, 10, stdin);
+>>>>>>> 8a86ad7369d7eb486178b4c79c267abf24a7081a
   
   
 
